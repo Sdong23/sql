@@ -133,7 +133,12 @@ VALUES (10,'Thomass Superfood Store', 'Fresh Focused', 'Thomas', 'Rosenthal');
 
 HINT: you might need to search for strfrtime modifers sqlite on the web to know what the modifers for month 
 and year are! */
-
+SELECT 
+    customer_id,
+    strftime('%m', market_date) AS month,
+    strftime('%Y', market_date) AS year
+FROM 
+    customer_purchases;
 
 
 /* 2. Using the previous query as a base, determine how much money each customer spent in April 2022. 
