@@ -51,7 +51,15 @@ SELECT
     ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY market_date DESC) AS visit_number
 FROM customer_purchases;
 
-
+SELECT customer_id, market_date
+FROM (
+    SELECT 
+        customer_id, 
+        market_date, 
+        ROW_NUMBER() OVER (PARTITION BY customer_id ORDER BY market_date DESC) AS visit_number
+    FROM customer_purchases
+) AS numbered_visits
+WHERE visit_number = 1;
 
 
 /* 3. Using a COUNT() window function, include a value along with each row of the 
