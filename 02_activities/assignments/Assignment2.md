@@ -55,6 +55,8 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 
 ```
 Retain changes is type 2, overwrite is type 1.
+type1: customer id, addresses
+type2: customer id, current address, previous address, start_date for the address, end_date for the address.
 ```
 
 ***
