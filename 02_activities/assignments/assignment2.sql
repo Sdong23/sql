@@ -220,6 +220,14 @@ VALUES(27,"Watermelon","large",1,"unit",CURRENT_TIMESTAMP)
 /* 1. Delete the older record for the whatever product you added. 
 
 HINT: If you don't specify a WHERE clause, you are going to have a bad time.*/
+DELETE FROM product_units
+WHERE product_id = (  
+    SELECT product_id
+    FROM product_units
+    WHERE product_name = 'Watermelon'  
+    ORDER BY snapshot_timestamp ASC  
+    LIMIT 1  -- Only get the oldest record
+);
 
 
 
