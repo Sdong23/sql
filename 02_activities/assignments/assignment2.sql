@@ -93,7 +93,7 @@ SELECT
     THEN TRIM(SUBSTR(product_name, INSTR(product_name, '-') + 1))
     ELSE NULL
   END AS description
-FROM product_table;
+FROM product;
 
 
 
@@ -116,7 +116,36 @@ HINT: There are a possibly a few ways to do this query, but if you're struggling
 "best day" and "worst day"; 
 3) Query the second temp table twice, once for the best day, once for the worst day, 
 with a UNION binding them. */
+WITH SalesByDate AS (
+    -- Step 1: Group sales by market date and calculate total sales
+    SELECT 
+        market_date,
+        SUM(quantity * cost_to_customer_per_qty) AS total_sales
+    FROM 
+        customer_purchases
+    GROUP BY 
+        market_date
+),
+RankedSales AS (
+    -- Step 2: Rank the dates based on total sales
+    SELECT 
+        market_date,
+        total_sales,
+        RANK() OVER (ORDER BY total_sales DESC) AS sales_rank_desc,  -- Highest sales gets rank 1
+        RANK() OVER (ORDER BY total_sales ASC) AS sales_rank_asc    -- Lowest sales gets rank 1
+    FROM 
+        SalesByDate
+)
+-- Step 3: Select the best (highest) and worst (lowest) sales days
+SELECT market_date, total_sales, 'Best Day' AS day_type
+FROM RankedSales
+WHERE sales_rank_desc = 1
 
+UNION ALL
+
+SELECT market_date, total_sales, 'Worst Day' AS day_type
+FROM RankedSales
+WHERE sales_rank_asc = 1;
 
 
 
