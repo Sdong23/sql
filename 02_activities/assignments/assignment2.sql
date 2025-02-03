@@ -199,6 +199,14 @@ GROUP BY
 This table will contain only products where the `product_qty_type = 'unit'`. 
 It should use all of the columns from the product table, as well as a new column for the `CURRENT_TIMESTAMP`.  
 Name the timestamp column `snapshot_timestamp`. */
+CREATE TABLE product_units AS
+SELECT 
+    p.*,  -- Select all columns from the product table
+    CURRENT_TIMESTAMP AS snapshot_timestamp  -- Add the current timestamp
+FROM 
+    product p
+WHERE 
+    p.product_qty_type = 'unit';  -- Filter for products with 'unit' as qty_type
 
 
 
