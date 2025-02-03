@@ -98,7 +98,13 @@ FROM product_table;
 
 
 /* 2. Filter the query to show any product_size value that contain a number with REGEXP. */
-
+SELECT 
+  product_name, 
+  product_size
+FROM 
+  product
+WHERE 
+  product_size REGEXP '[0-9]';
 
 
 -- UNION
