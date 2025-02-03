@@ -249,6 +249,19 @@ Finally, make sure you have a WHERE statement to update the right row,
 When you have all of these components, you can run the update statement. */
 ALTER TABLE product_units
 ADD current_quantity INT;
+UPDATE product_units
+SET current_quantity = COALESCE((
+    SELECT vi.quantity
+    FROM vendor_inventory vi
+    WHERE vi.product_id = product_units.product_id
+    AND vi.market_date = (
+        SELECT MAX(vi2.market_date)
+        FROM vendor_inventory vi2
+        WHERE vi2.product_id = product_units.product_id
+    )
+    LIMIT 1
+), 0);
+
 
 
 
