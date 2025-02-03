@@ -212,7 +212,8 @@ WHERE
 
 /*2. Using `INSERT`, add a new row to the product_units table (with an updated timestamp). 
 This can be any product you desire (e.g. add another record for Apple Pie). */
-
+INSERT INTO product_units (product_id, product_name, product_size, product_category_id, product_qty_type,snapshot_timestamp)
+VALUES(27,"Watermelon","large",1,"unit",CURRENT_TIMESTAMP)
 
 
 -- DELETE
