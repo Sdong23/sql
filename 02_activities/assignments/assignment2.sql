@@ -117,7 +117,7 @@ HINT: There are a possibly a few ways to do this query, but if you're struggling
 3) Query the second temp table twice, once for the best day, once for the worst day, 
 with a UNION binding them. */
 WITH SalesByDate AS (
-    -- Step 1: Group sales by market date and calculate total sales
+    -- 1: Group sales by market date and calculate total sales
     SELECT 
         market_date,
         SUM(quantity * cost_to_customer_per_qty) AS total_sales
@@ -127,7 +127,7 @@ WITH SalesByDate AS (
         market_date
 ),
 RankedSales AS (
-    -- Step 2: Rank the dates based on total sales
+    -- 2: Rank the dates based on total sales
     SELECT 
         market_date,
         total_sales,
@@ -136,7 +136,7 @@ RankedSales AS (
     FROM 
         SalesByDate
 )
--- Step 3: Select the best (highest) and worst (lowest) sales days
+-- 3: Select the best (highest) and worst (lowest) sales days
 SELECT market_date, total_sales, 'Best Day' AS day_type
 FROM RankedSales
 WHERE sales_rank_desc = 1
@@ -161,6 +161,36 @@ Remember, CROSS JOIN will explode your table rows, so CROSS JOIN should likely b
 Think a bit about the row counts: how many distinct vendors, product names are there (x)?
 How many customers are there (y). 
 Before your final group by you should have the product of those two queries (x*y).  */
+WITH VendorProductCombinations AS (
+    -- Step 1: Get each vendor-product combination
+    SELECT 
+        v.vendor_id,
+        v.vendor_name,
+        p.product_name,
+        p.product_id,  -- Use product_id for joining later
+        5 * 26 AS total_units_sold  -- 5 units sold to each of the 26 customers
+    FROM 
+        vendor_inventory vi
+    JOIN 
+        vendor v ON vi.vendor_id = v.vendor_id
+    JOIN 
+        product p ON vi.product_id = p.product_id
+)
+SELECT 
+    vpc.vendor_name,
+    vpc.product_name,
+    vpc.total_units_sold * cp.cost_to_customer_per_qty AS money_earned  -- Calculate total money earned
+FROM 
+    VendorProductCombinations vpc
+JOIN 
+    customer_purchases cp 
+    ON vpc.product_id = cp.product_id  -- Join on product_id to match cost
+    AND vpc.vendor_id = cp.vendor_id  -- Ensure vendor_id matches
+GROUP BY 
+    vpc.vendor_name,
+    vpc.product_name,
+    vpc.total_units_sold,
+    cp.cost_to_customer_per_qty;  -- Ensure the aggregation is correct for each vendor-product
 
 
 
