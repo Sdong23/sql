@@ -86,6 +86,14 @@ Remove any trailing or leading whitespaces. Don't just use a case statement for 
 | Habanero Peppers - Organic | Organic     |
 
 Hint: you might need to use INSTR(product_name,'-') to find the hyphens. INSTR will help split the column. */
+SELECT 
+  product_name,
+  CASE 
+    WHEN TRIM(SUBSTR(product_name, INSTR(product_name, '-') + 1)) IN ('Jar', 'Organic') 
+    THEN TRIM(SUBSTR(product_name, INSTR(product_name, '-') + 1))
+    ELSE NULL
+  END AS description
+FROM product_table;
 
 
 
