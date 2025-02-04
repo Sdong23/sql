@@ -54,7 +54,9 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+Retain changes is type 2, overwrite is type 1.
+type1: customer id, addresses
+type2: customer id, current address, previous address, start_date for the address, end_date for the address.
 ```
 
 ***
@@ -182,5 +184,28 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 
 ```
-Your thoughts...
+The increasing integration of artificial intelligence (AI) and machine learning models into daily life presents a myriad of ethical challenges that often go unnoticed by the general public. In her article “Neural Nets Are Just People All the Way Down”, Vicki Boykis explores how neural networks, which are often hailed as autonomous or self-sustaining entities, are fundamentally reliant on human labor. She highlights critical ethical issues such as exploitation, bias, accountability, and the potential for harm in the proliferation of large language models (LLMs). This paper critically examines these concerns, illustrating how these issues intersect with societal inequalities, corporate responsibility, and the potential dangers posed by the widespread use of AI technologies.
+
+One of the most pressing ethical issues discussed by Boykis is the exploitation of labor in the development of neural networks. While AI models such as neural nets may seem autonomous, they depend heavily on human workers to curate, label, and moderate the massive datasets that train these systems. Boykis argues that the general public tends to overlook the invisible labor that underpins the development of these technologies, which is often outsourced to workers in low-wage countries. Many of these workers are tasked with annotating images, moderating offensive content, or providing other services necessary for the training of AI systems.
+
+This labor is not only underpaid but also emotionally taxing. Moderators, for example, often work with disturbing or harmful content, which can have significant psychological effects. Despite the enormous role these workers play in creating highly functional AI systems, they are often rendered invisible in discussions about the ethics of AI. The failure to recognize and properly compensate this labor speaks to a broader issue of labor exploitation in the tech industry, which raises significant ethical questions about the fairness and human cost of technological innovation.
+
+Another key ethical concern in Boykis’ article revolves around the issue of bias in AI systems. Neural networks and large language models (LLMs) are trained on data collected from human sources. These datasets often reflect the biases, prejudices, and historical inequalities present in society. For instance, biased training data may result in algorithms that disproportionately disadvantage marginalized groups, reinforcing harmful stereotypes about race, gender, or socioeconomic status. Boykis argues that neural nets are not neutral; rather, they are shaped by the values and assumptions embedded in the data used to train them.
+
+These biases can have real-world consequences, particularly in systems that make critical decisions about hiring, lending, policing, and healthcare. A hiring algorithm, for example, may prefer male candidates over female candidates, or a loan application algorithm may discriminate against people of color based on biased historical data. These issues underscore the ethical imperative for developers to actively address and mitigate bias in AI systems to ensure they do not perpetuate or exacerbate existing societal inequalities.
+
+As AI systems, particularly large language models (LLMs), become more ubiquitous, there are growing concerns about the potential risks they pose in terms of content moderation and the spread of misinformation. Boykis notes that these models, while capable of generating impressively coherent and human-like text, can also be misused to spread disinformation, create fake news, and impersonate individuals. The ability of LLMs to generate persuasive text makes them powerful tools for malicious actors seeking to manipulate public opinion or deceive the public.
+
+The ethical implications of LLM proliferation extend beyond just the creation of false content; they also raise questions about the control of information. Who decides what information is disseminated by AI systems? Companies that develop these technologies, such as OpenAI, Google, and others, hold significant power over what content is generated and shared. Given the reach of AI-generated content, this concentration of power raises concerns about the potential censorship or biased dissemination of information, where certain voices and perspectives may be suppressed or amplified based on corporate interests.
+
+A critical ethical issue in the deployment of neural networks and LLMs is the question of accountability. Boykis draws attention to the challenges associated with determining responsibility when AI systems make harmful or biased decisions. If an AI system recommends the wrong candidate for a job or denies a loan to an individual based on biased data, who is responsible? The developers of the system? The corporations deploying it? Or the AI itself? The lack of transparency in many AI systems makes it difficult to pinpoint the source of the problem, complicating efforts to hold anyone accountable.
+
+The question of accountability becomes even more pressing as AI systems gain more autonomy and decision-making capabilities. If these systems are capable of making high-stakes decisions without human intervention, it becomes ethically problematic to absolve developers and companies of responsibility when things go wrong. Moreover, the lack of explainability in many neural networks — often described as the “black box” problem — makes it difficult for stakeholders to understand how these models arrive at their conclusions. This lack of transparency exacerbates concerns about accountability and calls for greater regulation and oversight of AI technologies.
+
+The Intersection of Technology and Society
+The ethical issues surrounding neural networks and AI are not only technological but also deeply societal. Boykis underscores the political nature of AI, highlighting how these technologies reflect the interests and values of the people and corporations that design them. The deployment of AI systems can have far-reaching consequences for societal structures, particularly in areas such as education, employment, and healthcare. The question of who benefits from AI advancements — and who is left behind — is critical to understanding the ethical ramifications of these technologies.
+
+As AI systems become more embedded in society, they risk entrenching existing inequalities. For example, people without access to advanced AI tools may find themselves marginalized in an increasingly automated world. Moreover, AI systems that prioritize corporate profit over the public good may exacerbate social inequalities, raising important ethical concerns about the intersection of technology, capitalism, and social justice.
+
+The ethical issues surrounding neural networks and large language models are complex and multifaceted. From labor exploitation and data bias to the risks of misinformation and accountability, these technologies present significant challenges that require careful consideration. As AI continues to evolve, it is crucial that developers, policymakers, and society at large address these ethical issues, ensuring that AI systems are developed and deployed in ways that benefit all people, not just those who control the technology. Only by confronting these challenges head-on can we create a future where AI serves the public good rather than exacerbating existing inequalities and injustices.
 ```
